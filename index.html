@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Do I Still Need Sass?</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Do I Still Need Sass?</h1>
+        <p>An up-to-date guide for front-end developers on replacing Sass with native CSS.</p>
+      </header>
+      <main>
+        <h2>Sass Feature Comparison</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Sass Feature</th>
+              <th>Native CSS Status</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Variables</td>
+              <td class="status-native">Native</td>
+              <td>CSS Custom Properties are more dynamic and can be updated at runtime.</td>
+            </tr>
+            <tr>
+              <td>Nesting</td>
+              <td class="status-development">In Development</td>
+              <td>
+                Supported in most modern browsers, with a slightly different syntax. See
+                <a href="https://caniuse.com/css-nesting">caniuse</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>Mixins</td>
+              <td class="status-no-equivalent">No Equivalent</td>
+              <td>No direct CSS equivalent for reusable blocks of styles with arguments.</td>
+            </tr>
+            <tr>
+              <td><code>@extend</code></td>
+              <td class="status-no-equivalent">No Equivalent</td>
+              <td>No feature for inheriting styles from other selectors.</td>
+            </tr>
+            <tr>
+              <td>Partials & <code>@import</code></td>
+              <td class="status-native">Native</td>
+              <td>
+                CSS has <code>@import</code>, but Sass offers a more advanced module system for better organization.
+              </td>
+            </tr>
+            <tr>
+              <td>Functions</td>
+              <td class="status-partial">Partial</td>
+              <td>
+                CSS has <code>calc()</code>, <code>clamp()</code>, and color functions, but not custom user-defined
+                functions.
+              </td>
+            </tr>
+            <tr>
+              <td>Control Flow (<code>@if</code>, <code>@each</code>)</td>
+              <td class="status-no-equivalent">No Equivalent</td>
+              <td>No equivalent for conditional logic or loops in CSS.</td>
+            </tr>
+            <tr>
+              <td>Operators</td>
+              <td class="status-partial">Partial</td>
+              <td>CSS <code>calc()</code> supports some mathematical operations, but Sass is more powerful.</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+      <footer>
+        <p>Last updated: October 2025</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
