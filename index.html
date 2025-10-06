@@ -1,142 +1,830 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Do I Still Need Sass?</title>
+    <title>Do I Still Need Sass? | Sass vs Native CSS Feature Comparison</title>
+    <meta
+      name="description"
+      content="An authoritative, up-to-date guide comparing Sass features with native CSS capabilities. Find out which Sass features you can replace with modern CSS."
+    />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Do I Still Need Sass?" />
+    <meta
+      property="og:description"
+      content="An authoritative, up-to-date guide comparing Sass features with native CSS capabilities."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Do I Still Need Sass?" />
+    <meta
+      name="twitter:description"
+      content="An authoritative, up-to-date guide comparing Sass features with native CSS capabilities."
+    />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <div id="app">
-      <header>
-        <h1>Do I Still Need Sass?</h1>
-        <p>An up-to-date guide for front-end developers on replacing Sass with native CSS.</p>
+  <body class="bg-[#0a0a0a] text-zinc-100 antialiased">
+    <!-- Gradient background -->
+    <div class="fixed inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#0f0f0f_1px,transparent_1px),linear-gradient(to_bottom,#0f0f0f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"
+      ></div>
+      <div class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl opacity-20" aria-hidden="true">
+        <div
+          class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-pink-500 to-purple-500"
+          style="
+            clip-path: polygon(
+              74.1% 44.1%,
+              100% 61.6%,
+              97.5% 26.9%,
+              85.5% 0.1%,
+              80.7% 2%,
+              72.5% 32.5%,
+              60.2% 62.4%,
+              52.4% 68.1%,
+              47.5% 58.3%,
+              45.2% 34.5%,
+              27.5% 76.7%,
+              0.1% 64.9%,
+              17.9% 100%,
+              27.6% 76.8%,
+              76.1% 97.7%,
+              74.1% 44.1%
+            );
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div id="app" class="relative">
+      <!-- Hero Section -->
+      <header class="px-6 pt-16 pb-8 sm:pt-24 sm:pb-12 text-center max-w-5xl mx-auto">
+        <h1
+          class="text-5xl sm:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-transparent"
+        >
+          Do I Still Need Sass?
+        </h1>
+        <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+          An authoritative, up-to-date guide comparing Sass features with native CSS capabilities.
+        </p>
+
+        <!-- Stats badges -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-10">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20"
+          >
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="text-sm font-medium text-emerald-300">4 Native</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span class="text-sm font-medium text-amber-300">2 Partial</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/20">
+            <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+            <span class="text-sm font-medium text-rose-300">8 No Equivalent</span>
+          </div>
+        </div>
       </header>
-      <main>
-        <h2>Sass Feature Comparison</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Sass Feature</th>
-              <th>Native CSS Status</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/variables">Variables</a></td>
-              <td class="status-native">Native</td>
-              <td>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"
-                  >CSS Custom Properties</a
-                >
-                are more dynamic and can be updated at runtime.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://sass-lang.com/documentation/at-rules/import">Partials & <code>@import</code></a>
-              </td>
-              <td class="status-native">Native</td>
-              <td>
-                CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import"><code>@import</code></a
-                >, but Sass offers a more advanced module system for better organization.
-              </td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/style-rules/nesting">Nesting</a></td>
-              <td class="status-development">In Development</td>
-              <td>
-                Supported in most modern browsers, with a slightly different syntax. See
-                <a href="https://caniuse.com/css-nesting">caniuse</a> for browser support. The CSS equivalent is the
-                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting">CSS Nesting Module</a>.
-              </td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/operators">Operators</a></td>
-              <td class="status-partial">Partial</td>
-              <td>
-                CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc()"><code>calc()</code></a> supports
-                some mathematical operations, but Sass is more powerful.
-              </td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/functions">Functions</a></td>
-              <td class="status-partial">Partial</td>
-              <td>
-                CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">functions</a> like
-                <code>calc()</code>, <code>clamp()</code>, and color functions, but not custom user-defined functions.
-              </td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/at-rules/use">Modules (<code>@use</code>)</a></td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>The modern way to manage dependencies and structure Sass projects. No direct CSS equivalent.</td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/modules">Built-in Modules</a></td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>
-                Sass provides powerful built-in modules like <code>sass:math</code>, <code>sass:color</code>, and
-                <code>sass:string</code>.
-              </td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/values">Value Types</a></td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>
-                Sass supports advanced data types like
-                <a href="https://sass-lang.com/documentation/values/maps">maps</a> and
-                <a href="https://sass-lang.com/documentation/values/lists">lists</a>.
-              </td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/at-rules/mixin">Mixins</a></td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>No direct CSS equivalent for reusable blocks of styles with arguments.</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://sass-lang.com/documentation/at-rules/extend"><code>@extend</code></a>
-              </td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>No feature for inheriting styles from other selectors.</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://sass-lang.com/documentation/at-rules/control"
-                  >Control Flow (<code>@if</code>, <code>@each</code>)</a
-                >
-              </td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>No equivalent for conditional logic or loops in CSS.</td>
-            </tr>
-            <tr>
-              <td><a href="https://sass-lang.com/documentation/interpolation">Interpolation</a></td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>No equivalent for embedding expressions within selectors or property names.</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://sass-lang.com/documentation/style-rules/parent-selector"
-                  >Parent Selector (<code>&</code>)</a
-                >
-              </td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>The <code>&</code> is part of the CSS Nesting spec, but Sass provides more advanced usage.</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://sass-lang.com/documentation/placeholder-selectors">Placeholders (<code>%</code>)</a>
-              </td>
-              <td class="status-no-equivalent">No Equivalent</td>
-              <td>No equivalent for creating styles that are only output when extended.</td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- Main Content -->
+      <main class="px-4 sm:px-6 pb-20 max-w-7xl mx-auto">
+        <div class="rounded-2xl border border-zinc-800/50 bg-zinc-900/50 backdrop-blur-sm overflow-hidden shadow-2xl">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-zinc-800">
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-900/80 sticky top-0"
+                  >
+                    Sass Feature
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-900/80 sticky top-0 w-48"
+                  >
+                    CSS Status
+                  </th>
+                  <th
+                    class="px-6 py-4 text-left text-xs font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-900/80 sticky top-0"
+                  >
+                    Notes
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-zinc-800/50">
+                <!-- Variables -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/variables"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Variables
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      Native
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    <a
+                      href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors font-mono text-xs"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      CSS Custom Properties
+                    </a>
+                    are more dynamic and can be updated at runtime.
+                  </td>
+                </tr>
+
+                <!-- Partials & @import -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/at-rules/import"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Partials & <code class="font-mono text-sm bg-zinc-800/50 px-1.5 py-0.5 rounded">@import</code>
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      Native
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    CSS has
+                    <a
+                      href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors font-mono text-xs"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      @import </a
+                    >, though Sass offers a more advanced module system.
+                  </td>
+                </tr>
+
+                <!-- Nesting -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/style-rules/nesting"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Nesting
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      Native
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    The
+                    <a
+                      href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      CSS Nesting Module
+                    </a>
+                    is now
+                    <a
+                      href="https://caniuse.com/css-nesting"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      widely supported
+                    </a>
+                    across modern browsers (93%+ global support).
+                  </td>
+                </tr>
+
+                <!-- Operators -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/operators"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Operators
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        ></path>
+                      </svg>
+                      Partial
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    CSS
+                    <a
+                      href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors font-mono text-xs"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      calc()
+                    </a>
+                    supports math operations, but Sass offers more comprehensive operators.
+                  </td>
+                </tr>
+
+                <!-- Functions -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/functions"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Functions
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        ></path>
+                      </svg>
+                      Partial
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    CSS has many
+                    <a
+                      href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      built-in functions </a
+                    >, but not custom user-defined functions.
+                  </td>
+                </tr>
+
+                <!-- Modules (@use) -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/at-rules/use"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Modules <code class="font-mono text-sm bg-zinc-800/50 px-1.5 py-0.5 rounded">@use</code>
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    The modern way to manage dependencies and namespaces in Sass.
+                  </td>
+                </tr>
+
+                <!-- Built-in Modules -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/modules"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Built-in Modules
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    Sass provides powerful modules like
+                    <code class="font-mono text-xs bg-zinc-800/50 px-1.5 py-0.5 rounded text-zinc-300">sass:math</code>
+                    and
+                    <code class="font-mono text-xs bg-zinc-800/50 px-1.5 py-0.5 rounded text-zinc-300">sass:color</code
+                    >.
+                  </td>
+                </tr>
+
+                <!-- Value Types -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/values"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Value Types
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    Sass supports advanced data types like
+                    <a
+                      href="https://sass-lang.com/documentation/values/maps"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      maps
+                    </a>
+                    and
+                    <a
+                      href="https://sass-lang.com/documentation/values/lists"
+                      class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      lists </a
+                    >.
+                  </td>
+                </tr>
+
+                <!-- Mixins -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/at-rules/mixin"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Mixins
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    No direct CSS equivalent for reusable blocks of styles with arguments.
+                  </td>
+                </tr>
+
+                <!-- @extend -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/at-rules/extend"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <code class="font-mono text-sm bg-zinc-800/50 px-1.5 py-0.5 rounded">@extend</code>
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    No feature for inheriting styles from other selectors.
+                  </td>
+                </tr>
+
+                <!-- Control Flow -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/at-rules/control"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Control Flow
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    No equivalent for conditional logic (<code
+                      class="font-mono text-xs bg-zinc-800/50 px-1.5 py-0.5 rounded text-zinc-300"
+                      >@if</code
+                    >) or loops (<code class="font-mono text-xs bg-zinc-800/50 px-1.5 py-0.5 rounded text-zinc-300"
+                      >@for</code
+                    >, <code class="font-mono text-xs bg-zinc-800/50 px-1.5 py-0.5 rounded text-zinc-300">@each</code>)
+                    in CSS.
+                  </td>
+                </tr>
+
+                <!-- Interpolation -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/interpolation"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Interpolation
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    No equivalent for embedding expressions within selectors or property names.
+                  </td>
+                </tr>
+
+                <!-- Parent Selector -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/style-rules/parent-selector"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Parent Selector <code class="font-mono text-sm bg-zinc-800/50 px-1.5 py-0.5 rounded">&</code>
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    The <code class="font-mono text-xs bg-zinc-800/50 px-1.5 py-0.5 rounded text-zinc-300">&</code> is
+                    part of the CSS Nesting spec, but Sass provides more advanced usage patterns.
+                  </td>
+                </tr>
+
+                <!-- Placeholders -->
+                <tr class="hover:bg-zinc-800/30 transition-colors">
+                  <td class="px-6 py-5">
+                    <a
+                      href="https://sass-lang.com/documentation/placeholder-selectors"
+                      class="inline-flex items-center gap-2 text-zinc-100 hover:text-white font-medium transition-colors group"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Placeholders <code class="font-mono text-sm bg-zinc-800/50 px-1.5 py-0.5 rounded">%</code>
+                      <svg
+                        class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        ></path>
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                      No Equivalent
+                    </span>
+                  </td>
+                  <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
+                    No equivalent for creating styles that are only output when extended.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </main>
-      <footer>
-        <p>Last updated: October 2025</p>
+
+      <!-- Footer -->
+      <footer class="px-6 py-12 text-center">
+        <div class="max-w-4xl mx-auto">
+          <p class="text-sm text-zinc-500">Last updated: October 2025</p>
+          <p class="text-xs text-zinc-600 mt-3">Made for developers who want to know when they can drop Sass.</p>
+        </div>
       </footer>
     </div>
     <script type="module" src="/src/main.js"></script>
