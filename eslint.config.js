@@ -1,15 +1,17 @@
 import js from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
 import sonarjs from "eslint-plugin-sonarjs";
+import importPlugin from "eslint-plugin-import";
 
 export default [
   js.configs.recommended,
   jsdoc.configs["flat/recommended-typescript-flavor"],
   sonarjs.configs.recommended,
+  importPlugin.flatConfigs.recommended,
   {
     files: ["**/*.js"],
     languageOptions: {
-      ecmaVersion: 2022,
+      ecmaVersion: "latest",
       sourceType: "module",
       globals: {
         // Node.js globals
