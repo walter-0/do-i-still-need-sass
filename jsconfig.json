@@ -4,8 +4,12 @@
     "target": "esnext",
     "strict": true,
     "moduleResolution": "bundler",
-    "checkJs": true
+    "checkJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
 
-  "include": ["src", "postcss.config.js", "tailwind.config.js", "eslint.config.js"]
+  "include": ["src", "postcss.config.js", "tailwind.config.js", "eslint.config.js", "test-setup.js"]
 }

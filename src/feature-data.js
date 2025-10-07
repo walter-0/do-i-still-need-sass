@@ -1,7 +1,13 @@
 // Mapping of Sass features to web-features package IDs and baseline data
 import { features } from "web-features";
-import "./typedefs.js";
 
+/**
+ * @import {SassFeature, FeatureWithBaseline, BaselineData} from './typedefs.js'
+ */
+
+/**
+ * @type {Array<SassFeature>}
+ */
 export const sassFeatures = [
   {
     id: "variables",
@@ -233,6 +239,11 @@ export function getBaselineData(featureId) {
   }
 
   const feature = features[featureId];
+
+  if (feature.kind !== "feature") {
+    return null;
+  }
+
   const status = feature.status;
 
   if (!status.baseline) {

@@ -57,3 +57,5 @@
  * @property {number} partial - Count of features with partial CSS support
  * @property {number} none - Count of features with no CSS equivalent
  */
+
+export {};
