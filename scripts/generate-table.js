@@ -1,4 +1,5 @@
 import { getAllFeaturesWithBaseline } from "../src/feature-data.js";
+import "../src/typedefs.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -6,7 +7,11 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Baseline badge component
+/**
+ * Generates a baseline badge HTML element based on browser support level.
+ * @param {BaselineData|null} baseline - Baseline data with level and since properties
+ * @returns {string} HTML string for the baseline badge
+ */
 function baselineBadge(baseline) {
   if (!baseline) {
     return "";
@@ -51,7 +56,11 @@ function baselineBadge(baseline) {
   `;
 }
 
-// Status badge component
+/**
+ * Generates a status badge HTML element for a feature's CSS implementation status.
+ * @param {string} status - Status value: 'native', 'partial', or 'none'
+ * @returns {string} HTML string for the status badge
+ */
 function statusBadge(status) {
   const badges = {
     native: {
@@ -87,7 +96,11 @@ function statusBadge(status) {
   `;
 }
 
-// Generate table row
+/**
+ * Generates a table row HTML element for a single Sass feature.
+ * @param {FeatureWithBaseline} feature - Feature data object with name, status, baseline, etc.
+ * @returns {string} HTML string for the table row
+ */
 function generateRow(feature) {
   const { name, sassUrl, status, notes, mdn, cssFeature, caniuse, baseline, links } = feature;
 
@@ -151,7 +164,10 @@ function generateRow(feature) {
   `;
 }
 
-// Generate full table
+/**
+ * Generates the complete table HTML with all feature rows.
+ * @returns {string} Complete HTML string for all table rows
+ */
 function generateTable() {
   const features = getAllFeaturesWithBaseline();
   const rows = features.map(generateRow).join("\n");
@@ -159,7 +175,10 @@ function generateTable() {
   return rows;
 }
 
-// Count features by status
+/**
+ * Counts features by their implementation status.
+ * @returns {FeatureCounts} Object with counts for native, partial, and none statuses
+ */
 function countFeatures() {
   const features = getAllFeaturesWithBaseline();
   const counts = {
@@ -174,19 +193,19 @@ function countFeatures() {
 }
 
 // Main execution
-console.log("Generating table HTML...");
+console.info("Generating table HTML...");
 const tableHTML = generateTable();
 const counts = countFeatures();
 
 // Output for manual insertion or save to file
-console.log("\n=== COUNTS ===");
-console.log(`Native: ${counts.native}`);
-console.log(`Partial: ${counts.partial}`);
-console.log(`No Equivalent: ${counts.none}`);
-console.log("\n=== TABLE HTML ===\n");
-console.log(tableHTML);
+console.info("\n=== COUNTS ===");
+console.info(`Native: ${counts.native}`);
+console.info(`Partial: ${counts.partial}`);
+console.info(`No Equivalent: ${counts.none}`);
+console.info("\n=== TABLE HTML ===\n");
+console.info(tableHTML);
 
 // Optionally write to file
 const outputPath = path.join(__dirname, "../generated-table.html");
 fs.writeFileSync(outputPath, tableHTML);
-console.log(`\n✓ Table HTML written to ${outputPath}`);
+console.info(`\n✓ Table HTML written to ${outputPath}`);

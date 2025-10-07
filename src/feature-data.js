@@ -1,5 +1,6 @@
 // Mapping of Sass features to web-features package IDs and baseline data
 import { features } from "web-features";
+import "./typedefs.js";
 
 export const sassFeatures = [
   {
@@ -131,7 +132,11 @@ export const sassFeatures = [
   },
 ];
 
-// Get baseline data for a feature
+/**
+ * Retrieves baseline browser support data for a given web feature.
+ * @param {string} featureId - The web-features package feature identifier
+ * @returns {BaselineData|null} Baseline data object with level, availability, and support info
+ */
 export function getBaselineData(featureId) {
   if (!featureId || !features[featureId]) {
     return null;
@@ -178,7 +183,10 @@ export function getBaselineData(featureId) {
   };
 }
 
-// Get all features with their baseline data
+/**
+ * Gets all Sass features enriched with their baseline browser support data.
+ * @returns {Array<FeatureWithBaseline>} Array of feature objects with baseline data included
+ */
 export function getAllFeaturesWithBaseline() {
   return sassFeatures.map((feature) => ({
     ...feature,
