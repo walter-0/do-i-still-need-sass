@@ -33,6 +33,44 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors" target="_blank" rel="noopener">CSS Custom Properties</a> are more dynamic and can be updated at runtime.
+        
+    <div class="mt-3 border-t border-zinc-800 pt-3">
+      <details class="code-example-details group">
+        <summary class="cursor-pointer text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors select-none">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            Show Example
+          </span>
+        </summary>
+        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Sass</div>
+            <pre class="language-scss"><code class="language-scss">$primary-color: #3498db;
+$padding: 16px;
+
+.button {
+  background-color: $primary-color;
+  padding: $padding;
+}</code></pre>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">CSS</div>
+            <pre class="language-css"><code class="language-css">:root {
+  --primary-color: #3498db;
+  --padding: 16px;
+}
+
+.button {
+  background-color: var(--primary-color);
+  padding: var(--padding);
+}</code></pre>
+          </div>
+        </div>
+      </details>
+    </div>
+  
       </td>
     </tr>
   
@@ -71,6 +109,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors font-mono text-xs" target="_blank" rel="noopener">@import</a>, though Sass offers a more advanced module system.
+        
       </td>
     </tr>
   
@@ -109,6 +148,52 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors" target="_blank" rel="noopener">CSS Nesting Module</a> is now <a href="https://caniuse.com/css-nesting" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors" target="_blank" rel="noopener">widely supported</a> across modern browsers.
+        
+    <div class="mt-3 border-t border-zinc-800 pt-3">
+      <details class="code-example-details group">
+        <summary class="cursor-pointer text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors select-none">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            Show Example
+          </span>
+        </summary>
+        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Sass</div>
+            <pre class="language-scss"><code class="language-scss">.card {
+  padding: 20px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  &amp;:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}</code></pre>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">CSS</div>
+            <pre class="language-css"><code class="language-css">.card {
+  padding: 20px;
+
+  &amp; h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  &amp;:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}</code></pre>
+          </div>
+        </div>
+      </details>
+    </div>
+  
       </td>
     </tr>
   
@@ -147,6 +232,40 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors font-mono text-xs" target="_blank" rel="noopener">calc()</a> supports math operations, but Sass offers more comprehensive operators.
+        
+    <div class="mt-3 border-t border-zinc-800 pt-3">
+      <details class="code-example-details group">
+        <summary class="cursor-pointer text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors select-none">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            Show Example
+          </span>
+        </summary>
+        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Sass</div>
+            <pre class="language-scss"><code class="language-scss">$base-size: 16px;
+
+.container {
+  width: $base-size * 20;
+  padding: $base-size / 2;
+  margin: $base-size + 8px;
+}</code></pre>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">CSS</div>
+            <pre class="language-css"><code class="language-css">.container {
+  width: calc(16px * 20);
+  padding: calc(16px / 2);
+  margin: calc(16px + 8px);
+}</code></pre>
+          </div>
+        </div>
+      </details>
+    </div>
+  
       </td>
     </tr>
   
@@ -177,6 +296,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors" target="_blank" rel="noopener">built-in functions</a>, but not custom user-defined functions.
+        
       </td>
     </tr>
   
@@ -207,6 +327,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         The modern way to manage dependencies and namespaces in Sass.
+        
       </td>
     </tr>
   
@@ -237,6 +358,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         Sass provides powerful modules like sass:math and sass:color.
+        
       </td>
     </tr>
   
@@ -267,6 +389,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         Sass supports advanced data types like <a href="https://sass-lang.com/documentation/values/maps" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors" target="_blank" rel="noopener">maps</a> and <a href="https://sass-lang.com/documentation/values/lists" class="text-blue-400 hover:text-blue-300 underline decoration-blue-400/30 hover:decoration-blue-300/50 transition-colors" target="_blank" rel="noopener">lists</a>.
+        
       </td>
     </tr>
   
@@ -297,6 +420,58 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         No direct CSS equivalent for reusable blocks of styles with arguments.
+        
+    <div class="mt-3 border-t border-zinc-800 pt-3">
+      <details class="code-example-details group">
+        <summary class="cursor-pointer text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors select-none">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            Show Example
+          </span>
+        </summary>
+        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Sass</div>
+            <pre class="language-scss"><code class="language-scss">@mixin button-style($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.primary-btn {
+  @include button-style(#3498db, white);
+}
+
+.danger-btn {
+  @include button-style(#e74c3c, white);
+}</code></pre>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">CSS</div>
+            <pre class="language-css"><code class="language-css">/* No direct CSS equivalent */
+/* You would need to write styles manually: */
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.danger-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+}</code></pre>
+          </div>
+        </div>
+      </details>
+    </div>
+  
       </td>
     </tr>
   
@@ -327,6 +502,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         No feature for inheriting styles from other selectors.
+        
       </td>
     </tr>
   
@@ -357,6 +533,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         No equivalent for conditional logic (@if) or loops (@for, @each) in CSS.
+        
       </td>
     </tr>
   
@@ -387,6 +564,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         No equivalent for embedding expressions within selectors or property names.
+        
       </td>
     </tr>
   
@@ -417,6 +595,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         The & is part of the CSS Nesting spec, but Sass provides more advanced usage patterns.
+        
       </td>
     </tr>
   
@@ -447,6 +626,7 @@
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         No equivalent for creating styles that are only output when extended.
+        
       </td>
     </tr>
   

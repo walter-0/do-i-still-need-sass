@@ -97,12 +97,62 @@ function statusBadge(status) {
 }
 
 /**
+ * Generates code example HTML if the feature has examples.
+ * @param {CodeExample} example - Code example object with sass and css properties
+ * @returns {string} HTML string for the code example section
+ */
+function codeExampleHtml(example) {
+  if (!example) return "";
+
+  return `
+    <div class="mt-3 border-t border-zinc-800 pt-3">
+      <details class="code-example-details group">
+        <summary class="cursor-pointer text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors select-none">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            Show Example
+          </span>
+        </summary>
+        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Sass</div>
+            <pre class="language-scss"><code class="language-scss">${escapeHtml(example.sass)}</code></pre>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">CSS</div>
+            <pre class="language-css"><code class="language-css">${escapeHtml(example.css)}</code></pre>
+          </div>
+        </div>
+      </details>
+    </div>
+  `;
+}
+
+/**
+ * Escapes HTML special characters.
+ * @param {string} text - Text to escape
+ * @returns {string} Escaped HTML string
+ */
+function escapeHtml(text) {
+  const map = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+/**
  * Generates a table row HTML element for a single Sass feature.
  * @param {FeatureWithBaseline} feature - Feature data object with name, status, baseline, etc.
  * @returns {string} HTML string for the table row
  */
 function generateRow(feature) {
-  const { name, sassUrl, status, notes, mdn, cssFeature, caniuse, baseline, links } = feature;
+  const { name, sassUrl, status, notes, mdn, cssFeature, caniuse, baseline, links, example } = feature;
 
   let notesHtml = notes;
 
@@ -159,6 +209,7 @@ function generateRow(feature) {
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         ${status !== "none" && cssFeature ? "CSS has " : ""}${notesHtml}
+        ${codeExampleHtml(example)}
       </td>
     </tr>
   `;

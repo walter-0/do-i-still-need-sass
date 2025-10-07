@@ -1,4 +1,10 @@
 /**
+ * @typedef {object} CodeExample
+ * @property {string} sass - Sass code example
+ * @property {string} css - CSS code example
+ */
+
+/**
  * @typedef {object} SassFeature
  * @property {string} id - Unique identifier for the feature
  * @property {string} name - Display name of the Sass feature
@@ -10,6 +16,7 @@
  * @property {string} [mdn] - URL to MDN documentation
  * @property {string} [caniuse] - URL to Can I Use page
  * @property {Array<Link>} [links] - Additional reference links
+ * @property {CodeExample} [example] - Code examples comparing Sass and CSS
  */
 
 /**
@@ -40,6 +47,7 @@
  * @property {string} [mdn] - URL to MDN documentation
  * @property {string} [caniuse] - URL to Can I Use page
  * @property {Array<Link>} [links] - Additional reference links
+ * @property {CodeExample} [example] - Code examples comparing Sass and CSS
  * @property {BaselineData|null} baseline - Browser support baseline data
  */
 

@@ -12,6 +12,24 @@ export const sassFeatures = [
     cssFeature: "CSS Custom Properties",
     notes: " are more dynamic and can be updated at runtime.",
     mdn: "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties",
+    example: {
+      sass: `$primary-color: #3498db;
+$padding: 16px;
+
+.button {
+  background-color: $primary-color;
+  padding: $padding;
+}`,
+      css: `:root {
+  --primary-color: #3498db;
+  --padding: 16px;
+}
+
+.button {
+  background-color: var(--primary-color);
+  padding: var(--padding);
+}`,
+    },
   },
   {
     id: "partials-import",
@@ -33,6 +51,32 @@ export const sassFeatures = [
     notes: " is now widely supported across modern browsers.",
     mdn: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting",
     caniuse: "https://caniuse.com/css-nesting",
+    example: {
+      sass: `.card {
+  padding: 20px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}`,
+      css: `.card {
+  padding: 20px;
+
+  & h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}`,
+    },
   },
   {
     id: "operators",
@@ -43,6 +87,20 @@ export const sassFeatures = [
     cssFeature: "calc()",
     notes: " supports math operations, but Sass offers more comprehensive operators.",
     mdn: "https://developer.mozilla.org/en-US/docs/Web/CSS/calc",
+    example: {
+      sass: `$base-size: 16px;
+
+.container {
+  width: $base-size * 20;
+  padding: $base-size / 2;
+  margin: $base-size + 8px;
+}`,
+      css: `.container {
+  width: calc(16px * 20);
+  padding: calc(16px / 2);
+  margin: calc(16px + 8px);
+}`,
+    },
   },
   {
     id: "functions",
@@ -89,6 +147,38 @@ export const sassFeatures = [
     webFeatureId: null,
     status: "none",
     notes: "No direct CSS equivalent for reusable blocks of styles with arguments.",
+    example: {
+      sass: `@mixin button-style($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.primary-btn {
+  @include button-style(#3498db, white);
+}
+
+.danger-btn {
+  @include button-style(#e74c3c, white);
+}`,
+      css: `/* No direct CSS equivalent */
+/* You would need to write styles manually: */
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.danger-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+}`,
+    },
   },
   {
     id: "extend",

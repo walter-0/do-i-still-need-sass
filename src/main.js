@@ -1,5 +1,9 @@
 import "./style.css";
 import "./typedefs.js";
+import Prism from "prismjs";
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-scss";
+import "prismjs/components/prism-css";
 
 /**
  * Initializes search and filter functionality for the features table.
@@ -89,9 +93,36 @@ function initializeFilters() {
   });
 }
 
+/**
+ * Initializes syntax highlighting for code examples.
+ */
+function initializeSyntaxHighlighting() {
+  // Highlight all code blocks on initial load
+  Prism.highlightAll();
+
+  // Re-highlight when details elements are opened
+  document.addEventListener(
+    "toggle",
+    (e) => {
+      if (e.target.matches("details.code-example-details") && e.target.open) {
+        // Highlight code blocks inside the opened details element
+        const codeBlocks = e.target.querySelectorAll("pre code");
+        codeBlocks.forEach((block) => {
+          Prism.highlightElement(block);
+        });
+      }
+    },
+    true,
+  );
+}
+
 // Initialize when DOM is ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeFilters);
+  document.addEventListener("DOMContentLoaded", () => {
+    initializeFilters();
+    initializeSyntaxHighlighting();
+  });
 } else {
   initializeFilters();
+  initializeSyntaxHighlighting();
 }

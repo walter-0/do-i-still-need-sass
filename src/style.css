@@ -24,4 +24,33 @@
   .filter-btn.active {
     @apply bg-purple-600 text-white border-purple-500 ring-2 ring-purple-500/50;
   }
+
+  /* Code example styles */
+  details.code-example-details summary {
+    list-style: none;
+  }
+
+  details.code-example-details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.code-example-details pre {
+    @apply rounded-lg bg-zinc-950/50 border border-zinc-800 overflow-x-auto;
+    margin: 0;
+  }
+
+  details.code-example-details code {
+    @apply text-sm;
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", "Monaco", monospace;
+  }
+
+  /* Override Prism theme colors for better dark mode integration */
+  details.code-example-details pre[class*="language-"] {
+    background: rgb(9 9 11 / 0.5);
+    padding: 1rem;
+  }
+
+  details.code-example-details code[class*="language-"] {
+    background: transparent;
+  }
 }
