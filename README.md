@@ -104,7 +104,7 @@ do-i-still-need-sass/
 │   ├── feature-data.js      # Central feature data with baseline info
 │   ├── main.js               # Search, filter, and syntax highlighting
 │   ├── style.css             # Tailwind CSS and custom styles
-│   └── typedefs.js           # JSDoc type definitions
+│   └── types.ts              # TypeScript type definitions
 ├── scripts/
 │   └── generate-table.js     # Generates HTML table from feature data
 ├── index.html                # Main page

@@ -53,7 +53,7 @@ export default [
       "jsdoc/require-description": "warn",
       "jsdoc/require-param-description": "warn",
       "jsdoc/require-returns-description": "warn",
-      "jsdoc/no-undefined-types": "off", // Allow custom types defined in typedefs.js
+      "jsdoc/no-undefined-types": "off", // Allow custom types defined in types.ts
 
       // SonarJS rules - complexity and bug detection
       "sonarjs/cognitive-complexity": ["warn", 15],

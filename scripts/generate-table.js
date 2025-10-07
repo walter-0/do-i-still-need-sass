@@ -1,5 +1,5 @@
 import { getAllFeaturesWithBaseline } from "../src/feature-data.js";
-import "../src/typedefs.js";
+import "../src/types.ts";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -58,7 +58,7 @@ function baselineBadge(baseline) {
 
 /**
  * Generates a status badge HTML element for a feature's CSS implementation status.
- * @param {string} status - Status value: 'native', 'partial', or 'none'
+ * @param {FeatureStatus} status - Status value: 'native', 'partial', or 'none'
  * @returns {string} HTML string for the status badge
  */
 function statusBadge(status) {
@@ -99,9 +99,10 @@ function statusBadge(status) {
 /**
  * Generates code example HTML if the feature has examples.
  * @param {CodeExample} example - Code example object with sass and css properties
+ * @param {string|undefined} whatsDifferent - Optional explanation of differences for partial support
  * @returns {string} HTML string for the code example section
  */
-function codeExampleHtml(example) {
+function codeExampleHtml(example, whatsDifferent) {
   if (!example) return "";
 
   return `
@@ -115,14 +116,31 @@ function codeExampleHtml(example) {
             Show Example
           </span>
         </summary>
-        <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div>
-            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Sass</div>
-            <pre class="language-scss"><code class="language-scss">${escapeHtml(example.sass)}</code></pre>
-          </div>
-          <div>
-            <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">CSS</div>
-            <pre class="language-css"><code class="language-css">${escapeHtml(example.css)}</code></pre>
+        <div class="mt-3">
+          ${
+            whatsDifferent
+              ? `<div class="mb-3 p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+            <div class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <div class="text-sm font-semibold text-amber-300 mb-1">What's different?</div>
+                <div class="text-sm text-amber-200/90 leading-relaxed">${escapeHtml(whatsDifferent)}</div>
+              </div>
+            </div>
+          </div>`
+              : ""
+          }
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Sass</div>
+              <pre class="language-scss"><code class="language-scss">${escapeHtml(example.sass)}</code></pre>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">CSS</div>
+              <pre class="language-css"><code class="language-css">${escapeHtml(example.css)}</code></pre>
+            </div>
           </div>
         </div>
       </details>
@@ -152,7 +170,7 @@ function escapeHtml(text) {
  * @returns {string} HTML string for the table row
  */
 function generateRow(feature) {
-  const { name, sassUrl, status, notes, mdn, cssFeature, caniuse, baseline, links, example } = feature;
+  const { name, sassUrl, status, notes, mdn, cssFeature, caniuse, baseline, links, example, whatsDifferent } = feature;
 
   let notesHtml = notes;
 
@@ -209,7 +227,7 @@ function generateRow(feature) {
       </td>
       <td class="px-6 py-5 text-sm text-zinc-400 leading-relaxed">
         ${status !== "none" && cssFeature ? "CSS has " : ""}${notesHtml}
-        ${codeExampleHtml(example)}
+        ${codeExampleHtml(example, whatsDifferent)}
       </td>
     </tr>
   `;

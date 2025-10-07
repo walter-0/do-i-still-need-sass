@@ -1,5 +1,5 @@
 import "./style.css";
-import "./typedefs.js";
+import "./types.ts";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-scss";
