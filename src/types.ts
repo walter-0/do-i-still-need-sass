@@ -81,10 +81,8 @@ export interface FeatureOccurrence {
  * Detection result for a specific Sass feature type
  */
 export interface FeatureDetectionResult {
-  featureType: string; // 'variables', 'mixins', 'nesting', etc.
   count: number;
-  occurrences: FeatureOccurrence[];
-  complexity?: number; // Optional complexity metric (e.g., nesting depth)
+  locations: SourceLocation[];
 }
 
 /**
@@ -93,8 +91,8 @@ export interface FeatureDetectionResult {
 export interface DetectionResults {
   variables: FeatureDetectionResult;
   nesting: FeatureDetectionResult & { maxDepth: number };
-  mixins: FeatureDetectionResult & { withParameters: number };
-  functions: FeatureDetectionResult;
+  mixins: FeatureDetectionResult & { definitions: number; usages: number };
+  functions: FeatureDetectionResult & { definitions: number; usages: number };
   controlFlow: FeatureDetectionResult & {
     ifCount: number;
     forCount: number;
