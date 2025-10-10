@@ -1,0 +1,58 @@
+// Test Case 12: @extend and Placeholder Selectors
+// Expected: MODERATE - can refactor to use utility classes
+// Score: 40-55
+
+// Placeholder selectors (%)
+%button-base {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+%card-base {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Using @extend
+.primary-button {
+  @extend %button-base;
+  background: #3498db;
+  color: white;
+}
+
+.secondary-button {
+  @extend %button-base;
+  background: #95a5a6;
+  color: white;
+}
+
+.product-card {
+  @extend %card-base;
+
+  .title {
+    @extend %text-truncate;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .description {
+    color: #666;
+  }
+}
+
+.profile-card {
+  @extend %card-base;
+  border: 1px solid #e0e0e0;
+}

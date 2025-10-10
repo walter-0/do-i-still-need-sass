@@ -1,0 +1,38 @@
+// Test Case 5: Mixins with Parameters
+// Expected: KEEP SASS - no CSS equivalent
+// Score: 15-25
+
+@mixin button-variant($bg, $text, $size: medium) {
+  background: $bg;
+  color: $text;
+  padding: if($size == large, 20px 40px, 10px 20px);
+  border-radius: 4px;
+
+  &:hover {
+    background: darken($bg, 10%);
+  }
+}
+
+@mixin responsive-font($min, $max, $viewport-min: 320px, $viewport-max: 1200px) {
+  font-size: $min;
+
+  @media (min-width: $viewport-min) and (max-width: $viewport-max) {
+    font-size: calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$viewport-min}) / (#{$viewport-max} - #{$viewport-min})));
+  }
+
+  @media (min-width: $viewport-max) {
+    font-size: $max;
+  }
+}
+
+.primary-btn {
+  @include button-variant(#3498db, white);
+}
+
+.large-success-btn {
+  @include button-variant(#2ecc71, white, large);
+}
+
+h1 {
+  @include responsive-font(24px, 48px);
+}

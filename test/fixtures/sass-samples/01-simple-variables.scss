@@ -1,0 +1,19 @@
+// Test Case 1: Simple Variables Only
+// Expected: EASY MIGRATION - migrate to CSS custom properties
+// Score: 95-100
+
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-size-base: 16px;
+$spacing: 20px;
+
+.button {
+  background: $primary-color;
+  font-size: $font-size-base;
+  padding: $spacing;
+}
+
+.card {
+  border-color: $secondary-color;
+  margin: $spacing;
+}

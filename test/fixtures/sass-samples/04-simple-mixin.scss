@@ -1,0 +1,22 @@
+// Test Case 4: Simple Mixins (no parameters)
+// Expected: MODERATE - can refactor to CSS classes
+// Score: 50-65
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+  @include flex-center;
+  @include card-shadow;
+}
+
+.button-group {
+  @include flex-center;
+}

@@ -1,0 +1,48 @@
+// Test Case 9: Custom Functions
+// Expected: KEEP SASS - no CSS equivalent
+// Score: 5-15
+
+@use "sass:math";
+@use "sass:color";
+
+// Convert px to rem
+@function px-to-rem($px, $base: 16px) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// Calculate contrast color
+@function contrast-color($bg) {
+  @if color.lightness($bg) > 50% {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Fluid typography calculator
+@function fluid-size($min, $max, $min-vw: 320px, $max-vw: 1200px) {
+  $slope: math.div($max - $min, $max-vw - $min-vw);
+  $intercept: $min - $slope * $min-vw;
+  @return clamp(#{$min}, #{$intercept} + #{$slope * 100vw}, #{$max});
+}
+
+// Strip units from values
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+  @return $number;
+}
+
+.heading {
+  font-size: px-to-rem(32px);
+}
+
+.card {
+  background: #3498db;
+  color: contrast-color(#3498db);
+}
+
+.responsive-text {
+  font-size: fluid-size(16px, 24px);
+}

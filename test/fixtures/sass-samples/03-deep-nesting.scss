@@ -1,0 +1,28 @@
+// Test Case 3: Deep Nesting (5 levels)
+// Expected: MODERATE - CSS nesting available but deep nesting is a code smell
+// Score: 60-75
+
+.navigation {
+  background: #fff;
+
+  .nav-list {
+    list-style: none;
+
+    .nav-item {
+      display: inline-block;
+
+      .nav-link {
+        text-decoration: none;
+
+        .icon {
+          width: 16px;
+          height: 16px;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}

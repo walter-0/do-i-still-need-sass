@@ -1,0 +1,77 @@
+// Test Case 11: Complex Data Structures (Maps & Lists)
+// Expected: KEEP SASS - no CSS equivalent
+// Score: 10-20
+
+@use "sass:map";
+@use "sass:list";
+
+// Design tokens as maps
+$design-tokens: (
+  colors: (
+    brand: (
+      primary: #3498db,
+      secondary: #2ecc71,
+      accent: #e74c3c
+    ),
+    neutral: (
+      100: #f8f9fa,
+      200: #e9ecef,
+      300: #dee2e6,
+      400: #ced4da
+    )
+  ),
+  typography: (
+    font-stack: ('Inter', -apple-system, sans-serif),
+    sizes: (
+      xs: 12px,
+      sm: 14px,
+      md: 16px,
+      lg: 18px,
+      xl: 24px
+    ),
+    weights: (
+      normal: 400,
+      medium: 500,
+      bold: 700
+    )
+  ),
+  spacing: (
+    0: 0,
+    1: 4px,
+    2: 8px,
+    3: 12px,
+    4: 16px,
+    5: 24px,
+    6: 32px
+  )
+);
+
+// Extract nested values
+.heading {
+  color: map.get($design-tokens, colors, brand, primary);
+  font-size: map.get($design-tokens, typography, sizes, xl);
+  font-weight: map.get($design-tokens, typography, weights, bold);
+  margin-bottom: map.get($design-tokens, spacing, 4);
+}
+
+// Iterate over map
+$button-variants: (
+  primary: map.get($design-tokens, colors, brand, primary),
+  success: map.get($design-tokens, colors, brand, secondary),
+  danger: map.get($design-tokens, colors, brand, accent)
+);
+
+@each $variant, $color in $button-variants {
+  .btn-#{$variant} {
+    background: $color;
+    color: white;
+    padding: map.get($design-tokens, spacing, 3) map.get($design-tokens, spacing, 4);
+  }
+}
+
+// Lists for font stacks
+$font-stack: map.get($design-tokens, typography, font-stack);
+
+body {
+  font-family: list.nth($font-stack, 1), list.nth($font-stack, 2), list.nth($font-stack, 3);
+}

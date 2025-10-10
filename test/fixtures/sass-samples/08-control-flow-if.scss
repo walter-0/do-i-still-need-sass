@@ -1,0 +1,41 @@
+// Test Case 8: Control Flow - @if/@else
+// Expected: KEEP SASS - no CSS equivalent
+// Score: 10-20
+
+$theme: 'dark';
+$enable-shadows: true;
+$font-size-base: 14px;
+
+.container {
+  @if $theme == 'dark' {
+    background: #1a1a1a;
+    color: #fff;
+  } @else {
+    background: #fff;
+    color: #333;
+  }
+
+  @if $enable-shadows {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  @if $font-size-base > 12px {
+    font-size: $font-size-base;
+  } @else {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+@mixin theme-aware($property, $light-value, $dark-value) {
+  @if $theme == 'dark' {
+    #{$property}: $dark-value;
+  } @else {
+    #{$property}: $light-value;
+  }
+}
+
+.button {
+  @include theme-aware(background, #f0f0f0, #2a2a2a);
+  @include theme-aware(color, #333, #fff);
+}

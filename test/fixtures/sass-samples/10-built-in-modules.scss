@@ -1,0 +1,65 @@
+// Test Case 10: Built-in Modules (sass:math, sass:color, etc.)
+// Expected: KEEP SASS - no CSS equivalent
+// Score: 10-20
+
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+
+$primary: #3498db;
+$sizes: 10px, 20px, 30px, 40px;
+
+$theme-config: (
+  colors: (
+    primary: #3498db,
+    secondary: #2ecc71
+  ),
+  spacing: (
+    small: 8px,
+    medium: 16px,
+    large: 24px
+  )
+);
+
+.container {
+  // sass:math
+  width: math.div(960px, 12); // 80px
+  padding: math.clamp(10px, 20px, 100px);
+  margin: math.max(10px, 20px, 15px);
+
+  // sass:color
+  background: $primary;
+  border-color: color.scale($primary, $lightness: 20%);
+  color: color.invert($primary);
+
+  // sass:list
+  padding-top: list.nth($sizes, 2); // 20px
+  padding-bottom: list.nth($sizes, 3); // 30px
+
+  // sass:map
+  margin: map.get($theme-config, spacing, medium);
+  background: map.get($theme-config, colors, primary);
+
+  // sass:string
+  &::before {
+    content: string.quote("Hello");
+  }
+}
+
+// Advanced color manipulation
+.button {
+  $base-color: #3498db;
+
+  background: $base-color;
+  border: 1px solid color.adjust($base-color, $lightness: -10%);
+
+  &:hover {
+    background: color.mix($base-color, white, 80%);
+  }
+
+  &:active {
+    background: color.scale($base-color, $saturation: -20%, $lightness: -15%);
+  }
+}

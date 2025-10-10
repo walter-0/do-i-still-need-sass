@@ -1,0 +1,31 @@
+// Test Case 6: Control Flow - Loops
+// Expected: KEEP SASS - no CSS equivalent for programmatic generation
+// Score: 5-15
+
+// Generate spacing utilities
+$spacing-base: 8px;
+
+@for $i from 1 through 8 {
+  .m-#{$i} {
+    margin: $spacing-base * $i;
+  }
+
+  .p-#{$i} {
+    padding: $spacing-base * $i;
+  }
+
+  .mt-#{$i} {
+    margin-top: $spacing-base * $i;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: $spacing-base * $i;
+  }
+}
+
+// Generate grid columns
+@for $col from 1 through 12 {
+  .col-#{$col} {
+    width: percentage($col / 12);
+  }
+}

@@ -1,0 +1,89 @@
+// Test Case 14: Advanced Parent Selector (&) Usage
+// Expected: MODERATE - CSS nesting has basic &, but not advanced patterns
+// Score: 45-60
+
+// Basic parent selector (CSS nesting can handle)
+.button {
+  background: #3498db;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Suffix concatenation (Sass-only)
+.card {
+  padding: 20px;
+
+  &-header {
+    font-weight: bold;
+  }
+
+  &-body {
+    padding: 10px 0;
+  }
+
+  &-footer {
+    border-top: 1px solid #ddd;
+  }
+
+  &-primary {
+    background: #3498db;
+  }
+
+  &-large {
+    padding: 30px;
+  }
+}
+
+// Parent reference in nested selectors (Sass-only)
+.theme-dark {
+  .button {
+    background: #2c3e50;
+
+    .theme-light & {
+      background: #ecf0f1;
+    }
+  }
+}
+
+// Complex selector manipulation
+.nav {
+  &-item {
+    display: inline-block;
+
+    &.active,
+    &:hover {
+      color: #3498db;
+    }
+
+    .mobile & {
+      display: block;
+    }
+
+    body.logged-in & {
+      &::after {
+        content: '✓';
+      }
+    }
+  }
+}
+
+// BEM pattern with parent selector
+.component {
+  &__element {
+    color: #333;
+
+    &--modifier {
+      color: #3498db;
+    }
+  }
+
+  &--large &__element {
+    font-size: 18px;
+  }
+}

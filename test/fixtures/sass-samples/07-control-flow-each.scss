@@ -1,0 +1,51 @@
+// Test Case 7: Control Flow - @each
+// Expected: KEEP SASS - no CSS equivalent
+// Score: 5-15
+
+$colors: (
+  primary: #3498db,
+  success: #2ecc71,
+  danger: #e74c3c,
+  warning: #f39c12,
+  info: #9b59b6
+);
+
+// Generate color variants
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: $color;
+  }
+
+  .text-#{$name} {
+    color: $color;
+  }
+
+  .border-#{$name} {
+    border-color: $color;
+  }
+
+  .btn-#{$name} {
+    background: $color;
+    color: white;
+
+    &:hover {
+      background: darken($color, 10%);
+    }
+  }
+}
+
+// Generate breakpoint utilities
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+);
+
+@each $name, $size in $breakpoints {
+  @media (min-width: $size) {
+    .hidden-#{$name} {
+      display: none;
+    }
+  }
+}

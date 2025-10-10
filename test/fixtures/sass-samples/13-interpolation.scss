@@ -1,0 +1,62 @@
+// Test Case 13: Interpolation (#{}
+// Expected: KEEP SASS - no CSS equivalent
+// Score: 15-25
+
+$prefix: 'app';
+$directions: top, right, bottom, left;
+$sizes: small, medium, large;
+
+// Dynamic class names
+.#{$prefix}-container {
+  width: 100%;
+}
+
+.#{$prefix}-header {
+  height: 60px;
+}
+
+// Dynamic property names
+$property: border;
+$side: top;
+
+.box {
+  #{$property}-#{$side}: 2px solid #ddd;
+  #{$property}-#{$side}-color: #e74c3c;
+}
+
+// Generate directional utilities
+@each $direction in $directions {
+  .text-#{$direction} {
+    text-align: #{$direction};
+  }
+
+  .float-#{$direction} {
+    float: #{$direction};
+  }
+}
+
+// Generate size variants
+@each $size in $sizes {
+  .btn-#{$size} {
+    @if $size == small {
+      padding: 5px 10px;
+    } @else if $size == medium {
+      padding: 10px 20px;
+    } @else {
+      padding: 15px 30px;
+    }
+  }
+}
+
+// Dynamic custom properties
+$theme-colors: (
+  primary: #3498db,
+  success: #2ecc71,
+  danger: #e74c3c
+);
+
+:root {
+  @each $name, $color in $theme-colors {
+    --color-#{$name}: #{$color};
+  }
+}

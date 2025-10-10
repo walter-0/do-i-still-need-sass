@@ -1,0 +1,145 @@
+// Test Case 15: Complex Real-World Example (Design System)
+// Expected: KEEP SASS - uses multiple advanced features
+// Score: 0-10
+
+@use "sass:math";
+@use "sass:color";
+@use "sass:map";
+
+// Design tokens
+$tokens: (
+  colors: (
+    primary: #3498db,
+    success: #2ecc71,
+    danger: #e74c3c,
+    warning: #f39c12
+  ),
+  spacing-scale: (0, 4px, 8px, 12px, 16px, 24px, 32px, 48px),
+  breakpoints: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px
+  )
+);
+
+// Custom function
+@function get-color($name) {
+  @return map.get($tokens, colors, $name);
+}
+
+@function spacing($index) {
+  @return list.nth(map.get($tokens, spacing-scale), $index + 1);
+}
+
+// Complex mixin with control flow
+@mixin button-variant($color, $style: solid) {
+  $bg: get-color($color);
+  $hover-bg: color.scale($bg, $lightness: -10%);
+
+  @if $style == solid {
+    background: $bg;
+    color: white;
+    border: 2px solid $bg;
+  } @else if $style == outline {
+    background: transparent;
+    color: $bg;
+    border: 2px solid $bg;
+
+    &:hover {
+      background: $bg;
+      color: white;
+    }
+  } @else if $style == ghost {
+    background: transparent;
+    color: $bg;
+    border: none;
+
+    &:hover {
+      background: color.scale($bg, $alpha: -80%);
+    }
+  }
+
+  &:hover {
+    background: $hover-bg;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Generate utility classes
+@each $name, $color in map.get($tokens, colors) {
+  .btn-#{$name} {
+    @include button-variant($name, solid);
+  }
+
+  .btn-#{$name}-outline {
+    @include button-variant($name, outline);
+  }
+
+  .btn-#{$name}-ghost {
+    @include button-variant($name, ghost);
+  }
+}
+
+// Generate spacing utilities
+@for $i from 0 through 7 {
+  .m-#{$i} { margin: spacing($i); }
+  .mt-#{$i} { margin-top: spacing($i); }
+  .mb-#{$i} { margin-bottom: spacing($i); }
+  .ml-#{$i} { margin-left: spacing($i); }
+  .mr-#{$i} { margin-right: spacing($i); }
+
+  .p-#{$i} { padding: spacing($i); }
+  .pt-#{$i} { padding-top: spacing($i); }
+  .pb-#{$i} { padding-bottom: spacing($i); }
+  .pl-#{$i} { padding-left: spacing($i); }
+  .pr-#{$i} { padding-right: spacing($i); }
+}
+
+// Responsive breakpoint mixin
+@mixin responsive($breakpoint) {
+  $size: map.get($tokens, breakpoints, $breakpoint);
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+// Component with all features
+.card {
+  $card-padding: spacing(4);
+
+  background: white;
+  padding: $card-padding;
+  border-radius: 8px;
+
+  &-header {
+    font-size: 20px;
+    margin-bottom: spacing(2);
+
+    @include responsive(md) {
+      font-size: 24px;
+    }
+  }
+
+  &-body {
+    color: #666;
+  }
+
+  @each $color-name, $color in map.get($tokens, colors) {
+    &--#{$color-name} {
+      border-left: 4px solid $color;
+
+      .card-header {
+        color: $color;
+      }
+    }
+  }
+
+  @include responsive(lg) {
+    padding: spacing(6);
+  }
+}
