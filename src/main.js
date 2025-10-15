@@ -4,6 +4,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-scss";
 import "prismjs/components/prism-css";
+import { initCalculator } from "./calculator-ui.js";
 
 /**
  * Initializes search and filter functionality for the features table.
@@ -121,8 +122,10 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     initializeFilters();
     initializeSyntaxHighlighting();
+    initCalculator();
   });
 } else {
   initializeFilters();
   initializeSyntaxHighlighting();
+  initCalculator();
 }
